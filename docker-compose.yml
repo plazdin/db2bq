@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  db2bq:
+    restart: always
+    image: bd2bq:lastest
+    container_name: db2bq
+    build:
+      context: .
+      dockerfile: dockerfile
+      network: host
+    command: tail -F anything  
+    volumes:
+      - ./log:/home/dbmaker/logs
+      - ./app:/home/dbmaker/app
+      - ./dbmaker-submodule/dbmaker/bundle:/home/dbmaker/bundle
+      
+    
